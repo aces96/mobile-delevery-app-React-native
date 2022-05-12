@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,Dimensions  } from 'react-native';
-import { Provider as PaperProvider } from 'react-native-paper';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider } from '@ui-kitten/components';
 import  {LoginForm}  from './components/loginForm';
 import {SafeAreaProvider } from 'react-native-safe-area-context'
 export default function App() {
@@ -8,10 +9,18 @@ export default function App() {
 
 
   return (
+    <SafeAreaProvider>
+      <ApplicationProvider {...eva} theme={eva.light}>
         <View style={styles.container}>
           <LoginForm/>
           <StatusBar style="auto" />
         </View>
+
+      </ApplicationProvider>
+
+    </SafeAreaProvider>
+      
+        
     
 
   );
@@ -21,7 +30,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'gold',
     alignItems: 'center',
     justifyContent: 'center',
   },

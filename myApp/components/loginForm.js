@@ -1,6 +1,7 @@
 import { StyleSheet, View } from "react-native"
-import { Surface, Text } from 'react-native-paper';
+import { useState } from "react";
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { ApplicationProvider, Layout, Button, Text, Input } from '@ui-kitten/components';
 import { useFonts } from "expo-font";
 import * as React from 'react'
 import { 
@@ -40,6 +41,8 @@ export  const LoginForm = ()=>{
         Roboto_900Black_Italic 
     })
 
+    let [text, setText] = useState('yeaah')
+
 
     if(!fontsLoaded){
         return null
@@ -59,10 +62,24 @@ export  const LoginForm = ()=>{
                 height: '15%',
                 backgroundColor: 'white',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
+                marginBottom: 5
             },
             title: {
                 fontFamily: 'Roboto_700Bold',
+                fontSize: 500
+            },
+            inputContainer: {
+                height: '70%',
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center'
+
+            },
+            input: {
+                width: '80%',
+                height: 50,
+                margin: 'auto',
             }
             
         }
@@ -71,9 +88,28 @@ export  const LoginForm = ()=>{
 
     return(
         <SafeAreaView style= {styles.container}>
-            <Surface style= {styles.titleContainer} >
-                <Text style= {styles.title}>heeeey</Text>
-            </Surface>
+                <Layout style={{height: 100, justifyContent: 'center', alignItems: 'center', marginTop: 30, marginBottom: 10 }}>
+                    <Text category='h2' style={{fontFamily: 'Roboto_700Bold', color: '#2155CD', fontWeight: "100", marginBottom: 10}}>LOGIN</Text>
+                    <Text category='s2' style={{fontFamily: 'Roboto_700Bold', color: '#2155CD', fontWeight: "100"}}>WELCOME BACK !</Text>
+                </Layout>
+                <Layout style={{height: 300, justifyContent: 'center', alignItems: 'center'}}>
+                <Input
+                placeholder='email@email.com'
+                label='Email'
+                status= 'primary'
+                />
+                <Input
+                placeholder='password'
+                label='Password'
+                status= 'primary'
+                style={{color: 'black', marginBottom: 10}}
+                />
+                <Button status='success' size='small' style={{width: "70%" , height: "8%", padding: 0}}>Submit</Button>
+                </Layout>
+
+
+
+            
         </SafeAreaView>
         
     )
