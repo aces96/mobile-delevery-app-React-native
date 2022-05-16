@@ -57,7 +57,7 @@ export const MealCard = (props)=>{
         container: {
             width: '90%',
             margin: 'auto',
-            elevation: 10,
+            elevation: 15,
             height: 150,
             backgroundColor:'yellow',
             flexDirection: 'row',
