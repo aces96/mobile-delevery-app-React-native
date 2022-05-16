@@ -7,7 +7,7 @@ let initialState = {
 }
 
 export const modalSlice = createSlice({
-  name: 'counter',
+  name: 'modalReducer',
   initialState,
   reducers: {
     update: (state) => {

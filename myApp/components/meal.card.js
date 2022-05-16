@@ -80,7 +80,7 @@ export const MealCard = (props)=>{
                 <Layout style={{height: '60%',justifyContent: 'center', alignItems: 'center'}}>
                     <Text category='h4' style={{fontFamily: 'Roboto_700Bold'}}>{props.name}</Text>
                     <Text category='s2' style={{fontFamily: 'Roboto_700Bold'}}>{props.description}</Text>
-                    <Text style={{fontFamily: 'Roboto_700Bold'}}>{props.price}</Text>
+                    <Text style={{fontFamily: 'Roboto_700Bold'}}>{props.price}DH</Text>
 
                 </Layout>
 
