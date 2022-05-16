@@ -1,8 +1,9 @@
-import { StyleSheet, View } from "react-native"
+import { StyleSheet, View, Linking } from "react-native"
 import { useState } from "react";
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { ApplicationProvider, Layout, Button, Text, Input } from '@ui-kitten/components';
+import { ApplicationProvider, Layout, Button, Text, Input, useTheme } from '@ui-kitten/components';
 import { useFonts } from "expo-font";
+import { withStyles } from '@ui-kitten/components';
 import * as React from 'react'
 import { 
     Roboto_100Thin,
@@ -42,6 +43,8 @@ export  const LoginForm = ()=>{
     })
 
     let [text, setText] = useState('yeaah')
+    const theme = useTheme()
+    
 
 
     if(!fontsLoaded){
@@ -51,10 +54,10 @@ export  const LoginForm = ()=>{
     const styles =   StyleSheet.create(
         {
             container: {
-                width: '90%',
+                width: '100%',
                 margin: 'auto',
                 height: '100%',
-                backgroundColor: 'blue'
+                backgroundColor: 'white'
             },
             titleContainer: {
                 width: '100%',
@@ -77,9 +80,10 @@ export  const LoginForm = ()=>{
 
             },
             input: {
-                width: '80%',
-                height: 50,
+                width: '90%',
                 margin: 'auto',
+                color: 'black',
+                marginBottom: 10
             }
             
         }
@@ -97,14 +101,25 @@ export  const LoginForm = ()=>{
                 placeholder='email@email.com'
                 label='Email'
                 status= 'primary'
+                style={styles.input}
                 />
                 <Input
                 placeholder='password'
                 label='Password'
                 status= 'primary'
-                style={{color: 'black', marginBottom: 10}}
+                style={styles.input}
                 />
-                <Button status='success' size='small' style={{width: "70%" , height: "8%", padding: 0}}>Submit</Button>
+                <Layout style={{height: 20,width: '90%', justifyContent: 'flex-end', marginBottom: 10}}>
+                    <Text onPress={() => Linking.openURL('http://google.com')} category='s2' style={{ color: 'blue', textAlign: 'right'}}>
+                        Forgot Password ?
+                    </Text>
+                </Layout>
+                <Button appearance='filled'   status='success' size='small' style={{width: "70%" , height: "10%", backgroundColor: theme["color-success-500"]}}>Submit</Button>
+                {/* <Layout style={{height: 20,width: '90%', justifyContent: 'flex-end', marginBottom: 10}}>
+                    <Text onPress={() => Linking.openURL('http://google.com')} category='s2' style={{ color: 'blue', textAlign: 'right'}}>
+                        Register ?
+                    </Text>
+                </Layout> */}
                 </Layout>
 
 
