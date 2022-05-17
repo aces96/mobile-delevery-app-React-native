@@ -1,28 +1,26 @@
 import React from 'react';
-import { Icon, Tab, TabBar } from '@ui-kitten/components';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { TabBar, Tab, Layout, Text } from '@ui-kitten/components';
+import { MealScreen } from './meal.screen';
+import { HomePage } from '../containers/home';
 
-    const PersonIcon = () => (
-    <Icon  name='person-outline'/>
-    );
+const { Navigator, Screen } = createMaterialTopTabNavigator();
 
-    const BellIcon = () => (
-    <Icon  name='bell-outline'/>
-    );
 
-    const EmailIcon = () => (
-    <Icon name='email-outline'/>
-    );
-    export const TabThemingShowcase = () => {
 
-    const [selectedIndex, setSelectedIndex] = React.useState(0);
+export const TopTabBar = ({ navigation, state }) => (
+  <TabBar
+    selectedIndex={state.index}
+    onSelect={index => navigation.navigate(state.routeNames[index])}>
+    <Tab title='HOME'/>
+    <Tab title='MEALS'/>
+  </TabBar>
+);
 
-    return (
-        <TabBar
-        selectedIndex={selectedIndex}
-        onSelect={index => setSelectedIndex(index)}>
-        <Tab icon={PersonIcon} title='USERS'/>
-        <Tab icon={BellIcon} title='ORDERS'/>
-        <Tab icon={EmailIcon} title='TRANSACTIONS'/>
-        </TabBar>
-    );
-    };
+export const TabNavigator = () => (
+  <Navigator tabBar={props => <TopTabBar {...props} />}>
+    <Screen name='HOME' component={HomePage}/>
+    <Screen name='MEALS' component={MealScreen}/>
+  </Navigator>
+);

@@ -59,12 +59,6 @@ export const SearchBar = ()=>{
     return ( 
         <Layout style={styles.container}>
             <Text style={{color: 'white'}}>GET STARTED !</Text>
-            <Input
-            placeholder='find your meal'
-            label='find meal'
-            accessoryLeft={RenderIcon}
-            style={{width: "90%", borderColor: '#FFCD38', backgroundColor: 'rgba(255,255, 255, 0.4)'}}
-            />
             <Button appearance='filled'   status='success' size='small' style={{width: "70%" , height: "10%", backgroundColor: '#95CD41', marginTop: 15}}>Submit</Button>
 
 

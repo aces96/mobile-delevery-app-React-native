@@ -47,6 +47,7 @@ export const  MealScreen = ()=>{
 
 
     return (
+        
         <ScrollView contentContainerStyle={styles.container}>
 
             {meals.map(e=>{

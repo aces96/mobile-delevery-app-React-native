@@ -12,6 +12,8 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { MealCard } from './components/meal.card';
 import { Provider } from 'react-redux'
 import store from './assets/redux/store';
+import { TabNavigator } from './components/topNav';
+import { Profil } from './containers/profil';
 
 
 export default function App() {
@@ -25,9 +27,9 @@ export default function App() {
         <IconRegistry icons={EvaIconsPack} />
           <ApplicationProvider {...eva} theme={eva.light} >
             <Provider store={store}>
-              <Stack.Navigator initialRouteName='meal'>
-                  <Stack.Screen name='meal' component={MealScreen}/>
-                  <Stack.Screen name='home' component={HomePage}/>
+              <Stack.Navigator  initialRouteName='profil'>
+                  <Stack.Screen name='profil' component={Profil}/>
+                  <Stack.Screen name='home' component={TabNavigator}/>
                   <Stack.Screen name='login' component={LoginForm}/>
               </Stack.Navigator>
             </Provider>

@@ -19,12 +19,16 @@ import {
     Roboto_900Black,
     Roboto_900Black_Italic 
   } from '@expo-google-fonts/roboto'
+import axios from "axios";
 
 
 
 
 
-export  const LoginForm = ()=>{
+export  const LoginForm = ({navigation})=>{
+
+    let [email, setEmail] = useState('')
+    let [password, setPassword] = useState('')
 
 
     let [fontsLoaded] = useFonts({
@@ -49,6 +53,32 @@ export  const LoginForm = ()=>{
 
     if(!fontsLoaded){
         return null
+    }
+
+
+    const handleSubmit = ()=>{
+        console.log(email);
+
+        const auth = async ()=>{
+
+            await axios.post('http://172.18.160.1:8000/api/signin', {
+                email: email,
+                password: password
+            }, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then((res)=>{
+                console.log(res);
+                navigation.navigate('home')
+            }).catch((err)=>{
+                console.log(err);
+            })
+
+        }
+
+        auth()
+
     }
 
     const styles =   StyleSheet.create(
@@ -102,19 +132,25 @@ export  const LoginForm = ()=>{
                 label='Email'
                 status= 'primary'
                 style={styles.input}
+                onChangeText={(text)=>{
+                    console.log(text);
+                    setEmail(email= text)}}
                 />
                 <Input
                 placeholder='password'
                 label='Password'
                 status= 'primary'
                 style={styles.input}
+                onChangeText={(text)=>setPassword(password= text)}
                 />
                 <Layout style={{height: 20,width: '90%', justifyContent: 'flex-end', marginBottom: 10}}>
                     <Text onPress={() => Linking.openURL('http://google.com')} category='s2' style={{ color: 'blue', textAlign: 'right'}}>
                         Forgot Password ?
                     </Text>
                 </Layout>
-                <Button appearance='filled'   status='success' size='small' style={{width: "70%" , height: "10%", backgroundColor: theme["color-success-500"]}}>Submit</Button>
+                <Button onPress={()=>{
+                        handleSubmit()
+                }} appearance='filled'   status='success' size='small' style={{width: "70%" , height: "10%", backgroundColor: theme["color-success-500"]}}>Submit</Button>
                 {/* <Layout style={{height: 20,width: '90%', justifyContent: 'flex-end', marginBottom: 10}}>
                     <Text onPress={() => Linking.openURL('http://google.com')} category='s2' style={{ color: 'blue', textAlign: 'right'}}>
                         Register ?

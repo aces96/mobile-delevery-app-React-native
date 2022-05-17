@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { StyleSheet, View, Linking, Image,ImageBackground, Dimensions } from "react-native"
-import { Layout, Button, Text, Input, useTheme } from '@ui-kitten/components';
-import { useSelector, useDispatch } from 'react-redux';
-import { addMeal, update } from '../assets/redux/modal.slice';
+import { StyleSheet, ImageBackground} from "react-native"
+import { Layout, Button, Text } from '@ui-kitten/components';
+import {  useDispatch } from 'react-redux';
 import { useFonts } from "expo-font";
 import { 
     Roboto_100Thin,
