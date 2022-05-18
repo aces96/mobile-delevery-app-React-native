@@ -49,7 +49,7 @@ export const ProfilImage = ()=>{
 
     const styles = StyleSheet.create({
         container: {
-            height: 250,
+            height: '40%',
             width: '100%',
             backgroundColor: 'white',
             justifyContent: 'center',

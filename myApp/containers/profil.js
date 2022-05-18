@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/Feather'
 import axios from 'axios';
 import { ProfilImage } from '../components/profil.image';
-
+import {ProfilInfo} from '../components/profil.infoSection'
+import { ProfilUpdate } from '../components/profil.update';
 
 
 
@@ -15,9 +16,11 @@ export const Profil = ()=>{
 
 
     return (
-        <Layout style={{flex: 1}}>
+        <ScrollView contentContainerStyle={{flexGrow: 1, alignItems: 'center'}}>
+            <ProfilUpdate/>
             <ProfilImage/>
-        </Layout>
+            <ProfilInfo/>
+        </ScrollView>
 
     )
 }

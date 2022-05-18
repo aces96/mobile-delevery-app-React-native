@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler'
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,Dimensions  } from 'react-native';
 import * as eva from '@eva-design/eva';
@@ -14,6 +15,7 @@ import { Provider } from 'react-redux'
 import store from './assets/redux/store';
 import { TabNavigator } from './components/topNav';
 import { Profil } from './containers/profil';
+import { LivreurOrderScreen } from './containers/livreur.orderScreen';
 
 
 export default function App() {
@@ -27,10 +29,11 @@ export default function App() {
         <IconRegistry icons={EvaIconsPack} />
           <ApplicationProvider {...eva} theme={eva.light} >
             <Provider store={store}>
-              <Stack.Navigator  initialRouteName='profil'>
+              <Stack.Navigator  initialRouteName='livreurOrders'>
                   <Stack.Screen name='profil' component={Profil}/>
                   <Stack.Screen name='home' component={TabNavigator}/>
                   <Stack.Screen name='login' component={LoginForm}/>
+                  <Stack.Screen name='livreurOrders' component={LivreurOrderScreen}/>
               </Stack.Navigator>
             </Provider>
           </ApplicationProvider>

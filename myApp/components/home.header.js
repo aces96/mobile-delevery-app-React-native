@@ -48,7 +48,7 @@ export const HomeHeader = ()=>{
             <ImageBackground source={image} style={{flex: 1}} resizeMode= 'stretch'>
             <Layout style={{backgroundColor: '0,0,0,0', marginTop: 100}} >
                 <Text category='h1' style={{fontFamily: 'Roboto_700Bold', color: '#F0A500', fontWeight: "900", textAlign: 'center'}}>
-                Fastest Deliver
+                Fastest Delivery
                 </Text>
             </Layout>
             <Layout style={{backgroundColor: '0,0,0,0'}}>

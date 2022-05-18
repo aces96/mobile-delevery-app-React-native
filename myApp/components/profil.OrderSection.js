@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { StyleSheet,ScrollView } from "react-native"
-import { Layout, Text } from '@ui-kitten/components';
+import { Button, Layout, Text } from '@ui-kitten/components';
 import { useSelector, useDispatch } from 'react-redux';
-import { OrderSection } from './profil.OrderSection';
 import { useFonts } from "expo-font";
 import { 
     Roboto_100Thin,
@@ -23,8 +22,7 @@ import {
 
 
 
-
-export const ProfilInfo = ()=>{
+export const OrderSection = ()=>{
 
     let [fontsLoaded] = useFonts({
         Roboto_100Thin,
@@ -47,28 +45,24 @@ export const ProfilInfo = ()=>{
 
     const styles = StyleSheet.create({
         container: {
-            height: '60%',
-            width: '95%',
-            margin: 'auto',
-            borderTopLeftRadius: 30,
-            borderTopRightRadius: 30,
-            elevation: 5
+            width:'100%',
+            height: '30%',
+            borderRadius: 10
         }
     })
 
 
 
     return(
-
         <Layout style={styles.container}>
-            <Text category='h5' style={{textAlign: 'center', marginTop: 10, fontFamily: 'Roboto_700Bold', marginBottom: 10}}>
-                Informations :
-            </Text>
-            <OrderSection/>
-
+            <Layout style={{alignItems: 'center',flexDirection: 'row',justifyContent: 'space-between', height: '50%'}}>
+                <Text category='h6' style={{marginLeft: 10, fontFamily: 'Roboto_700Bold'}}>total orders : </Text>
+                <Text category='h6' style={{marginRight: 10,fontFamily: 'Roboto_700Bold'}}>10</Text>
+            </Layout>
+            <Layout style={{height: '50%', width: '100%', alignItems: 'center', justifyContent: 'center'}}>
+                <Button size='small' style={{width: '40%', height: '60%'}}>Show More</Button>
+            </Layout>
 
         </Layout>
-
     )
-
 }
