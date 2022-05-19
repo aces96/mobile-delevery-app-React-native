@@ -2,6 +2,9 @@ import * as React from 'react'
 import { StyleSheet, View, Linking, Dimensions  } from "react-native"
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Layout, Button, Text, Input, useTheme } from '@ui-kitten/components';
+import {useSelector, useDispatch} from 'react-redux'
+import { useEffect } from 'react';
+import { updateVisibily } from '../assets/redux/orderModal.slice';
 import { useFonts } from "expo-font";
 import { 
     Roboto_100Thin,
@@ -22,6 +25,8 @@ import {
 
 
 export const OrderCard = ()=>{
+
+    const dispatch = useDispatch()
     let [fontsLoaded] = useFonts({
         Roboto_100Thin,
         Roboto_100Thin_Italic,
@@ -40,6 +45,7 @@ export const OrderCard = ()=>{
     if(!fontsLoaded){
         return null
     }
+
 
     const styles = StyleSheet.create({
         container: {
@@ -70,7 +76,7 @@ export const OrderCard = ()=>{
             </Layout>
 
             <Layout style={{height: '35%', width: '95%', marginTop: 5, alignItems: 'center',backgroundColor:'rgba(0,0,0,0)'}}>
-                <Button size='small' style={{width: '50%', height: '100%'}}>SHOW MORE</Button>
+                <Button onPress={()=>dispatch(updateVisibily(true))} size='small' style={{width: '50%', height: '100%'}}>SHOW MORE</Button>
 
             </Layout>
 

@@ -2,9 +2,9 @@ import * as React from 'react'
 import { StyleSheet, View, Linking, Dimensions, ScrollView  } from "react-native"
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Layout, Button, Text, Input, useTheme } from '@ui-kitten/components';
-import { HomeHeader } from '../components/home.header';
-import { MealSection } from '../components/home.mealSection';
+import {useSelector, useDispatch} from 'react-redux'
 import { OrderCard } from '../components/orderCard';
+import { OrderModal } from '../components/OrderModal';
 
 
 
@@ -34,7 +34,7 @@ export const LivreurOrderScreen = ()=>{
             <OrderCard/>
             <OrderCard/>
 
-
+        <OrderModal/>
         </ScrollView>
 
     )

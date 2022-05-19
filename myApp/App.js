@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler'
+import React from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,Dimensions  } from 'react-native';
 import * as eva from '@eva-design/eva';
