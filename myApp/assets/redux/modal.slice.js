@@ -3,19 +3,26 @@ import { createSlice } from '@reduxjs/toolkit'
 
 let initialState = {
     show: false,
-    meals: []
+    meal: []
 }
 
 export const modalSlice = createSlice({
   name: 'modalReducer',
   initialState,
   reducers: {
-    update: (state) => {
-      state.show = !show
+    update: (state, action) => {
+      return {
+        ...state,
+        show: action.payload
+      }    
     },
-    addMeal: (state, payload)=>{
-        state.meals = payload
+    addMeal: (state, action)=>{
+      return{
+        ...state,
+        meal: action.payload
+      }
     }
+
   },
 })
 

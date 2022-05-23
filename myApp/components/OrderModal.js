@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Button, Card, Modal, Text } from '@ui-kitten/components';
+import { Button, Card, Modal, Text, Layout } from '@ui-kitten/components';
 import {useSelector, useDispatch} from 'react-redux'
 import { updateVisibily } from '../assets/redux/orderModal.slice';
 import { useState, useEffect } from 'react';
@@ -27,10 +27,12 @@ export const OrderModal = (props) => {
     const styles = StyleSheet.create({
         container: {
           minHeight: 192,
+          width: '100%'
         },
         backdrop: {
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
         },
+
       });
   
     return (
@@ -38,14 +40,19 @@ export const OrderModal = (props) => {
         <Modal
             visible={visible}
             backdropStyle={styles.backdrop}
+            style={{width: '80%'}}
             onBackdropPress={()=>{
                 dispatch(updateVisibily(false))
 
             }}>
-            <Card disabled={true}>
+            <Card style={styles.card} disabled={true}>
                 <Text>Orders Modal</Text>
+                <Layout style={{justifyContent: 'space-between', flexDirection: 'row', marginBottom: 5}}>
+                  <Text>MEAL1</Text>
+                  <Text>30DH</Text>
+                </Layout>
                 <Button onPress={() => dispatch(updateVisibily(false))}>
-                DISMISS
+                Submit
                 </Button>
             </Card>
         </Modal>

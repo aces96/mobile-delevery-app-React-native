@@ -17,6 +17,7 @@ import store from './assets/redux/store';
 import { TabNavigator } from './components/topNav';
 import { Profil } from './containers/profil';
 import { LivreurOrderScreen } from './containers/livreur.orderScreen';
+import { Cart } from './components/cart';
 
 
 export default function App() {
@@ -30,11 +31,12 @@ export default function App() {
         <IconRegistry icons={EvaIconsPack} />
           <ApplicationProvider {...eva} theme={eva.light} >
             <Provider store={store}>
-              <Stack.Navigator  initialRouteName='livreurOrders'>
+              <Stack.Navigator  initialRouteName='home'>
                   <Stack.Screen name='profil' component={Profil}/>
                   <Stack.Screen name='home' component={TabNavigator}/>
                   <Stack.Screen name='login' component={LoginForm}/>
                   <Stack.Screen name='livreurOrders' component={LivreurOrderScreen}/>
+                  <Stack.Screen name='cart' component={Cart}/>
               </Stack.Navigator>
             </Provider>
           </ApplicationProvider>

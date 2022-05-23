@@ -9,8 +9,11 @@ export const mealSlice = createSlice({
   name: 'mealReducer',
   initialState,
   reducers: {
-    addRepas: (state, payload)=>{
-        state.repas = payload
+    addRepas: (state, action)=>{
+        return {
+          ...state.repas,
+          repas: action.payload
+        }
     }
   },
 })

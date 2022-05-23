@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { StyleSheet, ImageBackground} from "react-native"
 import { Layout, Button, Text } from '@ui-kitten/components';
-import {  useDispatch } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import { useFonts } from "expo-font";
+import { update, addMeal } from '../assets/redux/modal.slice';
 import { 
     Roboto_100Thin,
     Roboto_100Thin_Italic,
@@ -21,16 +22,7 @@ import {
 
 
 export const MealCard = (props)=>{
-
     const dispatch = useDispatch()
-
-
-    const handleClick = ()=>{
-
-
-
-    }
-
 
     let [fontsLoaded] = useFonts({
         Roboto_100Thin,
@@ -50,6 +42,22 @@ export const MealCard = (props)=>{
     if(!fontsLoaded){
         return null
     }
+
+
+
+    const handleClick = ()=>{
+        console.log('here');
+        const meal = [{
+            name: props.name,
+            description: props.description,
+            price: props.price
+        }]
+        dispatch(addMeal(meal))
+        dispatch(update(true))
+    }
+
+
+
 
 
     const styles = StyleSheet.create({
@@ -84,7 +92,7 @@ export const MealCard = (props)=>{
                 </Layout>
 
                 <Layout style={{flexDirection: 'row', height: '40%',justifyContent: 'center', alignItems: 'center'}}>
-                    <Button onPress={()=> handleClick} size='small' style={{width: '60%', height: '50%'}}>
+                    <Button onPress={handleClick} size='small' style={{width: '60%', height: '50%'}}>
                         SHOW MORE
                     </Button>
 

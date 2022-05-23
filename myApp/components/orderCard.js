@@ -72,7 +72,7 @@ export const OrderCard = ()=>{
             </Layout>
 
             <Layout style={{height: '30%', width: '95%', flexDirection: 'row', padding: 5, justifyContent: 'center',backgroundColor:'rgba(0,0,0,0)'}}>
-                <Text category='s1' style={{fontFamily: 'Roboto_700Bold'}}>Meals Number: 3</Text>
+                <Text category='s1' style={{fontFamily: 'Roboto_700Bold'}}>Number of Meals: 3</Text>
             </Layout>
 
             <Layout style={{height: '35%', width: '95%', marginTop: 5, alignItems: 'center',backgroundColor:'rgba(0,0,0,0)'}}>
