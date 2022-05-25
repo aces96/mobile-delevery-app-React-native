@@ -25,7 +25,7 @@ export const  MealScreen = ()=>{
     })
     useEffect(()=>{
             const getRepas = async ()=>{
-                let data = await axios.get('http://172.16.11.127:8000/api/repas')
+                let data = await axios.get('http://172.27.144.1:8000/api/repas')
                     .then((res)=>{
                         dispatch(addRepas(res.data.repas))
                     }).catch((err)=>{
@@ -35,7 +35,7 @@ export const  MealScreen = ()=>{
 
 
             getRepas()
-            console.log(meals)
+            // console.log(meals)
     },[])
     
 

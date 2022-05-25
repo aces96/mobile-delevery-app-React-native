@@ -2,9 +2,7 @@ import * as React from 'react'
 import { StyleSheet, ScrollView, Linking, Image, Dimensions } from "react-native"
 import { Layout, Button, Text, Input, useTheme, Modal } from '@ui-kitten/components';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Icon from 'react-native-vector-icons/Feather'
-import axios from 'axios';
+import Storage from '../assets/storage/storage';
 import { useFonts } from "expo-font";
 import { 
     Roboto_100Thin,
@@ -26,6 +24,34 @@ import {
 
 
 export const Cart = ()=>{
+
+    let meals = []
+    let payload = []
+
+    const [repas, setRepas] = useState([]) 
+
+    useEffect(()=>{
+        
+
+        const getMeals = async ()=>{
+            const storage = new Storage
+            payload = await storage.getData()
+            
+            // console.log(payload);
+
+            payload.map(e=>{
+                meals.push(JSON.parse(e[1]))
+                console.log(meals.length);
+            })
+
+            setRepas(oldArr => [...oldArr, meals])
+            console.log(repas[0])    
+            
+        }
+
+        getMeals()
+
+    }, [])
 
     let [fontsLoaded] = useFonts({
         Roboto_100Thin,
@@ -63,28 +89,44 @@ export const Cart = ()=>{
     })
 
 
+
+
+
     return(
 
         <Layout style={styles.container}>
-            <Layout style={styles.mealCont}>
+
+            {repas[0].map(e=>{
+                return (
+                    <Layout style={styles.mealCont}>
+                        
                 <Layout style={{width:'25%', height: '100%', borderWidth: 2, borderColor: 'black'}}>
 
                 </Layout>
-                <Layout style={{width: '45%', height: '100%', borderWidth: 2, borderColor: 'black', alignItems: 'center', justifyContent: 'center'}}>
-                    <Text category='h5' style={{fontFamily: 'Roboto_700Bold'}}>MEAL 1</Text>
-                    <Text category='s1' style={{fontFamily: 'Roboto_700Bold'}}>DESCRIPTION MEAL1</Text>
 
+                <Layout style={{width: '45%', height: '100%', borderWidth: 2, borderColor: 'black', alignItems: 'center', justifyContent: 'center'}}>
+                    <Text category='h5' style={{fontFamily: 'Roboto_700Bold'}}>{e.meal.name}</Text>
+                    <Text category='s1' style={{fontFamily: 'Roboto_700Bold'}}>{e.meal.description}</Text>
                 </Layout>
+
                 <Layout style={{width: '35%', height: '100%', borderWidth: 2, borderColor: 'black'}}>
-                    <Layout style={{height: '60%', alignItems: 'center', justifyContent: 'center'}}>
-                        <Text category='h6' style={{fontFamily: 'Roboto_700Bold'}}>150DH</Text>
-                    </Layout>
-                    <Layout style={{height: '40%', alignItems: 'center', justifyContent: 'center'}}>
-                        <Text category='s1' style={{fontFamily: 'Roboto_700Bold'}}>QT: 2</Text>
-                    </Layout>
+                <Layout style={{height: '60%', alignItems: 'center', justifyContent: 'center'}}>
+                    <Text category='h6' style={{fontFamily: 'Roboto_700Bold'}}>{e.meal.price * e.quantity}DH</Text>
+                </Layout>
+                <Layout style={{height: '40%', alignItems: 'center', justifyContent: 'center'}}>
+                    <Text category='s1' style={{fontFamily: 'Roboto_700Bold'}}>{e.quantity}</Text>
+                </Layout>
                 </Layout>
 
             </Layout>
+                )
+
+            })}
+                    
+
+                
+                
+            
 
             <Button text size='small' style={{backgroundColor: '#49FF00', width: '50%'}}>Submit</Button>
 

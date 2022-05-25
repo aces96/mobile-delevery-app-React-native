@@ -31,7 +31,7 @@ export default function App() {
         <IconRegistry icons={EvaIconsPack} />
           <ApplicationProvider {...eva} theme={eva.light} >
             <Provider store={store}>
-              <Stack.Navigator  initialRouteName='home'>
+              <Stack.Navigator  initialRouteName='cart'>
                   <Stack.Screen name='profil' component={Profil}/>
                   <Stack.Screen name='home' component={TabNavigator}/>
                   <Stack.Screen name='login' component={LoginForm}/>
@@ -42,11 +42,6 @@ export default function App() {
           </ApplicationProvider>
       </SafeAreaProvider>
     </NavigationContainer>
-
-      
-        
-    
-
   );
 }
 

@@ -47,11 +47,11 @@ export const MealCard = (props)=>{
 
     const handleClick = ()=>{
         console.log('here');
-        const meal = [{
+        const meal = {
             name: props.name,
             description: props.description,
             price: props.price
-        }]
+        }
         dispatch(addMeal(meal))
         dispatch(update(true))
     }
